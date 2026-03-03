@@ -1,17 +1,7 @@
-/* =========================
-   Northline Digital — main.js
-   Делает:
-   - бургер-меню (мобилка)
-   - плавный скролл по якорям с учётом sticky header
-   - кнопку "наверх" (появляется при прокрутке)
-   - фильтр кейсов (работает даже без data-атрибутов)
-   - обработку формы (проверка + фейковая отправка)
-   ========================= */
+
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* -------------------------
-     1) Плавный скролл по якорям
-     ------------------------- */
+  
   const header = document.querySelector(".header");
   const headerHeight = () => (header ? header.offsetHeight : 0);
 
@@ -30,19 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const href = a.getAttribute("href");
     if (!href || href === "#") return;
 
-    // если якорь существует на странице — скроллим сами
+    
     if (document.querySelector(href)) {
       e.preventDefault();
       scrollToId(href);
 
-      // если меню открыто на мобилке — закроем
       closeMobileMenu();
     }
   });
 
-  /* -------------------------
-     2) Бургер-меню (мобилка)
-     ------------------------- */
+ 
   const burger = document.querySelector(".burger");
   const nav = document.querySelector(".nav");
   const headerCta = document.querySelector(".header__cta");
@@ -56,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("menu-open");
     if (burger) burger.setAttribute("aria-expanded", "true");
 
-    // Показать nav и кнопку заявки на мобилке (CSS у тебя их скрывает)
+    
     if (nav) {
       nav.style.display = "block";
       nav.style.position = "absolute";
@@ -87,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("menu-open");
     if (burger) burger.setAttribute("aria-expanded", "false");
 
-    // вернуть как было (пусть CSS решает)
+    
     if (nav) {
       nav.removeAttribute("style");
     }
@@ -108,31 +95,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Закрытие по ESC
+  
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeMobileMenu();
   });
 
-  // Если растянули окно до десктопа — закрываем меню и сбрасываем inline-стили
+ 
   window.addEventListener("resize", () => {
     if (!isMobile()) closeMobileMenu();
   });
 
-  /* -------------------------
-     3) Кнопка "наверх"
-     ------------------------- */
+  
   const scrollTopBtn = document.querySelector(".scroll-top");
 
   function setScrollTopVisible(visible) {
     if (!scrollTopBtn) return;
-    // не требуем доп CSS — управляем прямо стилями
+    
     scrollTopBtn.style.opacity = visible ? "1" : "0";
     scrollTopBtn.style.pointerEvents = visible ? "auto" : "none";
     scrollTopBtn.style.transform = visible ? "translateY(0)" : "translateY(6px)";
   }
 
   if (scrollTopBtn) {
-    // стартовое состояние
+   
     setScrollTopVisible(window.scrollY > 400);
 
     window.addEventListener("scroll", () => {
@@ -144,9 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* -------------------------
-     4) Фильтр кейсов
-     ------------------------- */
+  
   const filterBtns = Array.from(document.querySelectorAll(".cases__filter-btn"));
   const caseCards = Array.from(document.querySelectorAll(".cases__card"));
 
@@ -158,10 +141,10 @@ document.addEventListener("DOMContentLoaded", () => {
       .trim();
   }
 
-  // Если у карточек нет data-category — попробуем угадать по заголовку
+  
   function inferCategory(card) {
     const title = normalize(card.querySelector(".cases__title")?.textContent);
-    // можно расширять по желанию
+    
     if (title.includes("seo")) return "seo";
     if (title.includes("реклам")) return "ads";
     if (title.includes("бренд")) return "branding";
@@ -171,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getCardCategory(card) {
     const cat = normalize(card.dataset.category);
-    if (cat) return cat; // если ты потом добавишь data-category — будет идеально
+    if (cat) return cat; 
     return inferCategory(card);
   }
 
@@ -186,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
     caseCards.forEach((card) => {
       const cat = getCardCategory(card);
 
-      // "все"
+      
       const show =
         k === "все" || k === "all" ||
         (k === "сайты" && cat === "sites") ||
@@ -207,12 +190,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* -------------------------
-     5) Форма: проверка + фейковая отправка
-     ------------------------- */
+  
   const form = document.querySelector(".contact__form");
   if (form) {
-    // блок под сообщение (создаём один раз)
+   
     const msg = document.createElement("div");
     msg.className = "form__message";
     msg.style.marginTop = "12px";
@@ -256,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Фейковая успешная отправка (как будто отправили)
+      
       showMessage("Заявка отправлена! Мы свяжемся с вами в течение 24 часов.", true);
       form.reset();
     });

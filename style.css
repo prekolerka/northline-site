@@ -1,9 +1,4 @@
-/* =========================
-   Northline Digital — CSS
-   (простая, понятная версия)
-   ========================= */
 
-/* 1) Цвета (только для цветов — как ты просила) */
 :root {
   --color-bg-dark: #0F172A;
   --color-bg-dark-2: #1E293B;
@@ -21,7 +16,7 @@
   --color-border-light: rgba(15, 23, 42, 0.12);
 }
 
-/* 2) База */
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -97,7 +92,7 @@ a:hover { text-decoration: none; }
   font-size: 16px;
 }
 
-/* 3) Кнопки */
+/* Кнопки */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -133,7 +128,7 @@ a:hover { text-decoration: none; }
   border-color: var(--color-accent);
 }
 
-/* 4) Сетки и карточки */
+
 .grid {
   display: grid;
   gap: 18px;
@@ -179,9 +174,7 @@ a:hover { text-decoration: none; }
 
 }
 
-/* =========================
-   HEADER
-   ========================= */
+
 .header {
   position: sticky;
   top: 0;
@@ -254,9 +247,7 @@ a:hover { text-decoration: none; }
   border-radius: 10px;
 }
 
-/* =========================
-   HERO
-   ========================= */
+
 .hero {
   background: radial-gradient(800px 300px at 20% 10%, rgba(124, 58, 237, 0.28), transparent 60%),
               radial-gradient(900px 320px at 80% 0%, rgba(34, 211, 238, 0.18), transparent 55%),
@@ -337,13 +328,11 @@ a:hover { text-decoration: none; }
 .hero__image img{
    max-width: 100%;
   max-height: 100%;
-  object-fit: contain;        /* чтобы не обрезалась */
+  object-fit: contain;        
   border-radius: 12px;
 }
 
-/* =========================
-   SERVICES
-   ========================= */
+
 .services {
   background: var(--color-bg-light);
 }
@@ -360,9 +349,7 @@ a:hover { text-decoration: none; }
   border: 1px solid rgba(124, 58, 237, 0.22);
 }
 
-/* =========================
-   CASES
-   ========================= */
+
 .cases {
   background: #fff;
 }
@@ -435,9 +422,7 @@ a:hover { text-decoration: none; }
 }
 .cases__link:hover { color: var(--color-accent-hover); }
 
-/* =========================
-   BENEFITS
-   ========================= */
+
 .benefits {
   background: var(--color-bg-dark);
   color: var(--color-text-light);
@@ -499,13 +484,11 @@ a:hover { text-decoration: none; }
 .benefits__image img{
     max-width: 100%;
   max-height: 100%;
-  object-fit: contain;        /* чтобы не обрезалась */
+  object-fit: contain;        
   border-radius: 12px;
 }
 
-/* =========================
-   TESTIMONIAL
-   ========================= */
+
 .testimonial {
   background: var(--color-bg-light);
 }
@@ -550,9 +533,7 @@ a:hover { text-decoration: none; }
   font-size: 13px;
 }
 
-/* =========================
-   BLOG
-   ========================= */
+
 .blog {
   background: #fff;
 }
@@ -608,9 +589,6 @@ a:hover { text-decoration: none; }
   justify-content: flex-start;
 }
 
-/* =========================
-   CTA
-   ========================= */
 .cta {
   background: var(--color-bg-dark);
   color: var(--color-text-light);
@@ -636,9 +614,6 @@ a:hover { text-decoration: none; }
   color: rgba(241,245,249,0.80);
 }
 
-/* =========================
-   CONTACT
-   ========================= */
 .contact {
   background: #fff;
 }
@@ -722,9 +697,7 @@ a:hover { text-decoration: none; }
   margin-top: 3px;
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+
 .footer {
   background: var(--color-bg-dark);
   color: var(--color-text-light);
@@ -800,11 +773,8 @@ a:hover { text-decoration: none; }
   text-decoration: underline;
 }
 
-/* =========================
-   Адаптив
-   ========================= */
 
-/* Планшет */
+
 @media (max-width: 992px) {
   .hero__inner {
     grid-template-columns: 1fr;
@@ -836,7 +806,7 @@ a:hover { text-decoration: none; }
   }
 }
 
-/* Мобилка */
+
 @media (max-width: 768px) {
   .nav { display: none; }
   .header__cta { display: none; }
@@ -872,7 +842,7 @@ a:hover { text-decoration: none; }
   }
 }
 
-/* Очень маленькие */
+
 @media (max-width: 420px) {
   .hero__title { font-size: 32px; }
   .btn { width: 100%; }
